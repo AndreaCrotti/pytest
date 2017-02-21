@@ -1,5 +1,13 @@
 * Pytest
 
+#+BEGIN_SRC  python
+  from unnecessary_math import multiply
+
+  def test_numbers_3_4():
+      assert multiply(3,4) == 12
+
+#+END_SRC
+
 * Test discovery
 
 #+BEGIN_SRC sh
