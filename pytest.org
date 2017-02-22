@@ -1,10 +1,48 @@
 * Pytest
 
-#+BEGIN_SRC python
-  from unnecessary_math import multiply
+** Magic assert overloading
 
-  def test_numbers_3_4():
-      assert multiply(3,4) == 12
+** Auto discovery of tests
+
+** Modular fixtures
+
+** Can run standard unittest tests
+
+** Rich plugin architecture, 250+ plugins available
+
+* From 
+
+#+BEGIN_SRC python
+  class TestOldWay(TestCase):
+      def test_with_method(self):
+          for a, b, out in [
+              (1, 2, 3),
+              (2, 4, 6)]:
+
+              self.assertEqual(amazing_math(a, b), out)
+#+END_SRC
+
+* To
+
+#+BEGIN_SRC python
+  def test_old_way():
+      for a, b, out in [
+          (1, 2, 3),
+          (2, 4, 6)]:
+          assert amazing_math(a, b) == out
+
+
+#+END_SRC
+
+* To even better
+
+#+BEGIN_SRC python
+  @pytest.mark.parametrize(('a', 'b', 'out'), [
+      (1, 2, 3),
+      (2, 4, 6),
+  ])
+  def test_new_way(a, b, out):
+      assert amazing_math(a, b) == out
 
 #+END_SRC
 
@@ -37,6 +75,10 @@
   py.test -x --pdb   # drop to PDB on first failure, then end test session
   py.test --pdb --maxfail=3  # drop to PDB for first three failures
 
+#+END_SRC
+
+#+BEGIN_SRC sh
+  py.test --lf # run last failed tests
 #+END_SRC
 
 #+BEGIN_SRC sh
@@ -346,8 +388,6 @@
 | pytest-splinter              | (1.8.1)           |
 
 
-* Running tests
+* Demo time
 
-* Configuring pytest
-
-* Advanced features
+[[./nyancat.jpeg]]
