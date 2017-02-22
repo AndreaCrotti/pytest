@@ -1,6 +1,6 @@
 * Pytest
 
-#+BEGIN_SRC  python
+#+BEGIN_SRC python
   from unnecessary_math import multiply
 
   def test_numbers_3_4():
@@ -11,32 +11,42 @@
 * Test discovery
 
 #+BEGIN_SRC sh
-  pytest test_mod.py   # run tests in module
-  pytest somepath      # run all tests below somepath
-  pytest -k stringexpr # only run tests with names that match the
-                        # "string expression", e.g. "MyClass and not method"
-                        # will select TestMyClass.test_something
-                        # but not TestMyClass.test_method_simple
-  pytest test_mod.py::test_func  # only run tests that match the "node ID",
-                                  # e.g. "test_mod.py::test_func" will select
-                                  # only test_func in test_mod.py
-  pytest test_mod.py::TestClass::test_method  # run a single method in
-                                               # a single class
+  py.test test_mod.py
+#+END_SRC
+
+#+BEGIN_SRC sh
+  py.test somepath
+#+END_SRC
+
+#+BEGIN_SRC sh
+  py.test -k stringexpr
+#+END_SRC
+
+#+BEGIN_SRC sh
+  py.test test_mod.py::test_func
+#+END_SRC
+
+#+BEGIN_SRC sh
+  py.test test_mod.py::TestClass::test_method
 
 #+END_SRC
 
 * Debugging
 
 #+BEGIN_SRC sh
-  pytest -x --pdb   # drop to PDB on first failure, then end test session
-  pytest --pdb --maxfail=3  # drop to PDB for first three failures
+  py.test -x --pdb   # drop to PDB on first failure, then end test session
+  py.test --pdb --maxfail=3  # drop to PDB for first three failures
+
+#+END_SRC
+
+#+BEGIN_SRC sh
 
 #+END_SRC
 
 * Slow tests
 
 #+BEGIN_SRC sh
-  pytest --durations=10
+  py.test --durations=10
 #+END_SRC
 
 * Plugins
@@ -92,7 +102,6 @@
 | pytest-paste-config          | (0.1)             |
 | pytest-fixture-config        | (1.2.2)           |
 | pytest-config                | (0.0.11)          |
-| your                         | Python            |
 | pytest-console-scripts       | (0.1.2)           |
 | pytest-consul                | (0.0.2)           |
 | pytest-salt-containers       | (0.2.dev7)        |
