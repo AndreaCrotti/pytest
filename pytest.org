@@ -390,4 +390,9 @@
 
 * Demo time
 
+- dev-tools
+- iwoca-django
+- libraries
+
 [[./nyancat.jpeg]]
+
